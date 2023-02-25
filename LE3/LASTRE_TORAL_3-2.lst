@@ -1,0 +1,826 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.33 build 59893 
+                                                                                               Tue Feb 21 13:07:57 2023
+
+Microchip Technology Omniscient Code Generator (Lite mode) build 59893
+     1                           	processor	16F877A
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	idataBANK0,global,class=CODE,delta=2
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	maintext,global,class=CODE,split=1,delta=2
+    10                           	psect	text1,local,class=CODE,merge=1,delta=2
+    11                           	psect	text2,local,class=CODE,merge=1,delta=2
+    12                           	psect	intentry,global,class=CODE,delta=2
+    13                           	dabs	1,0x7E,2
+    14  0000                     	;# 
+    15  0001                     	;# 
+    16  0002                     	;# 
+    17  0003                     	;# 
+    18  0004                     	;# 
+    19  0005                     	;# 
+    20  0006                     	;# 
+    21  0007                     	;# 
+    22  0008                     	;# 
+    23  0009                     	;# 
+    24  000A                     	;# 
+    25  000B                     	;# 
+    26  000C                     	;# 
+    27  000D                     	;# 
+    28  000E                     	;# 
+    29  000E                     	;# 
+    30  000F                     	;# 
+    31  0010                     	;# 
+    32  0011                     	;# 
+    33  0012                     	;# 
+    34  0013                     	;# 
+    35  0014                     	;# 
+    36  0015                     	;# 
+    37  0015                     	;# 
+    38  0016                     	;# 
+    39  0017                     	;# 
+    40  0018                     	;# 
+    41  0019                     	;# 
+    42  001A                     	;# 
+    43  001B                     	;# 
+    44  001B                     	;# 
+    45  001C                     	;# 
+    46  001D                     	;# 
+    47  001E                     	;# 
+    48  001F                     	;# 
+    49  0081                     	;# 
+    50  0085                     	;# 
+    51  0086                     	;# 
+    52  0087                     	;# 
+    53  0088                     	;# 
+    54  0089                     	;# 
+    55  008C                     	;# 
+    56  008D                     	;# 
+    57  008E                     	;# 
+    58  0091                     	;# 
+    59  0092                     	;# 
+    60  0093                     	;# 
+    61  0094                     	;# 
+    62  0098                     	;# 
+    63  0099                     	;# 
+    64  009C                     	;# 
+    65  009D                     	;# 
+    66  009E                     	;# 
+    67  009F                     	;# 
+    68  010C                     	;# 
+    69  010D                     	;# 
+    70  010E                     	;# 
+    71  010F                     	;# 
+    72  018C                     	;# 
+    73  018D                     	;# 
+    74                           
+    75                           	psect	idataBANK0
+    76  00D1                     __pidataBANK0:	
+    77                           
+    78                           ;initializer for _count_flag
+    79  00D1  3401               	retlw	1
+    80  00D2  3400               	retlw	0
+    81  0007                     _PORTC	set	7
+    82  0008                     _PORTD	set	8
+    83  005F                     _GIE	set	95
+    84  005C                     _INTE	set	92
+    85  0059                     _INTF	set	89
+    86  0028                     _RA0	set	40
+    87  005D                     _TMR0IE	set	93
+    88  005A                     _TMR0IF	set	90
+    89  009F                     _ADCON1	set	159
+    90  0081                     _OPTION_REG	set	129
+    91  0085                     _TRISA	set	133
+    92  0086                     _TRISB	set	134
+    93  0087                     _TRISC	set	135
+    94  0088                     _TRISD	set	136
+    95                           
+    96                           ; #config settings
+    97  0000                     
+    98                           	psect	cinit
+    99  0015                     start_initialization:	
+   100  0015                     __initialization:	
+   101                           
+   102                           ; Initialize objects allocated to BANK0
+   103  0015  120A  118A  20D1  120A  118A  	fcall	__pidataBANK0	;fetch initializer
+   104  001A  00A5               	movwf	__pdataBANK0& (0+127)
+   105  001B  120A  118A  20D2   	fcall	__pidataBANK0+1	;fetch initializer
+   106  001E  00A6               	movwf	(__pdataBANK0+1)& (0+127)
+   107  001F                     end_of_initialization:	
+   108                           ;End of C runtime variable initialization code
+   109                           
+   110  001F                     __end_of__initialization:	
+   111  001F  0183               	clrf	3
+   112  0020  120A  118A  2884   	ljmp	_main	;jump to C main() function
+   113                           
+   114                           	psect	dataBANK0
+   115  0025                     __pdataBANK0:	
+   116  0025                     _count_flag:	
+   117  0025                     	ds	2
+   118                           
+   119                           	psect	cstackCOMMON
+   120  0070                     __pcstackCOMMON:	
+   121  0070                     ?_ISR:	
+   122  0070                     ??_ISR:	
+   123                           ; 0 bytes @ 0x0
+   124                           
+   125  0070                     ?_main:	
+   126                           ; 0 bytes @ 0x0
+   127                           
+   128                           
+   129                           ; 0 bytes @ 0x0
+   130  0070                     	ds	6
+   131  0076                     ISR@read:	
+   132                           
+   133                           ; 2 bytes @ 0x6
+   134  0076                     	ds	2
+   135                           
+   136                           	psect	cstackBANK0
+   137  0020                     __pcstackBANK0:	
+   138  0020                     ?_delay:	
+   139  0020                     delay@counter:	
+   140                           ; 0 bytes @ 0x0
+   141                           
+   142                           
+   143                           ; 2 bytes @ 0x0
+   144  0020                     	ds	2
+   145  0022                     ??_delay:	
+   146                           
+   147                           ; 0 bytes @ 0x2
+   148  0022                     	ds	1
+   149  0023                     delay@of_count:	
+   150                           
+   151                           ; 2 bytes @ 0x3
+   152  0023                     	ds	2
+   153  0025                     ??_main:	
+   154                           
+   155                           	psect	maintext
+   156  0084                     __pmaintext:	
+   157                           ; 0 bytes @ 0x5
+   158 ;;
+   159 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   160 ;;
+   161 ;; *************** function _main *****************
+   162 ;; Defined at:
+   163 ;;		line 105 in file "Z:\3201\LE3\LASTRE_TORAL_3-2.c"
+   164 ;; Parameters:    Size  Location     Type
+   165 ;;		None
+   166 ;; Auto vars:     Size  Location     Type
+   167 ;;		None
+   168 ;; Return value:  Size  Location     Type
+   169 ;;		None               void
+   170 ;; Registers used:
+   171 ;;		wreg, status,2, status,0, pclath, cstack
+   172 ;; Tracked objects:
+   173 ;;		On entry : 17F/0
+   174 ;;		On exit  : 0/0
+   175 ;;		Unchanged: 0/0
+   176 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   177 ;;      Params:         0       0       0       0       0
+   178 ;;      Locals:         0       0       0       0       0
+   179 ;;      Temps:          0       0       0       0       0
+   180 ;;      Totals:         0       0       0       0       0
+   181 ;;Total ram usage:        0 bytes
+   182 ;; Hardware stack levels required when called:    2
+   183 ;; This function calls:
+   184 ;;		_delay
+   185 ;; This function is called by:
+   186 ;;		Startup code after reset
+   187 ;; This function uses a non-reentrant model
+   188 ;;
+   189                           
+   190                           
+   191                           ;psect for function _main
+   192  0084                     _main:	
+   193                           
+   194                           ;LASTRE_TORAL_3-2.c: 107: GIE = 1;
+   195                           
+   196                           ;incstack = 0
+   197                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   198  0084  178B               	bsf	11,7	;volatile
+   199                           
+   200                           ;LASTRE_TORAL_3-2.c: 108: INTE = 1;
+   201  0085  160B               	bsf	11,4	;volatile
+   202                           
+   203                           ;LASTRE_TORAL_3-2.c: 109: INTF = 0;
+   204  0086  108B               	bcf	11,1	;volatile
+   205                           
+   206                           ;LASTRE_TORAL_3-2.c: 110: OPTION_REG = 0x43;
+   207  0087  3043               	movlw	67
+   208  0088  1683               	bsf	3,5	;RP0=1, select bank1
+   209  0089  1303               	bcf	3,6	;RP1=0, select bank1
+   210  008A  0081               	movwf	1	;volatile
+   211                           
+   212                           ;LASTRE_TORAL_3-2.c: 114: TMR0IE = 1;
+   213  008B  168B               	bsf	11,5	;volatile
+   214                           
+   215                           ;LASTRE_TORAL_3-2.c: 115: TMR0IF = 0;
+   216  008C  110B               	bcf	11,2	;volatile
+   217                           
+   218                           ;LASTRE_TORAL_3-2.c: 117: TRISA = 0x00;
+   219  008D  0185               	clrf	5	;volatile
+   220                           
+   221                           ;LASTRE_TORAL_3-2.c: 118: ADCON1 = 0x06;
+   222  008E  3006               	movlw	6
+   223  008F  009F               	movwf	31	;volatile
+   224                           
+   225                           ;LASTRE_TORAL_3-2.c: 119: TRISB = 0x01;
+   226  0090  3001               	movlw	1
+   227  0091  0086               	movwf	6	;volatile
+   228                           
+   229                           ;LASTRE_TORAL_3-2.c: 120: TRISC = 0x00;
+   230  0092  0187               	clrf	7	;volatile
+   231                           
+   232                           ;LASTRE_TORAL_3-2.c: 121: TRISD= 0xFF;
+   233  0093  30FF               	movlw	255
+   234  0094  0088               	movwf	8	;volatile
+   235                           
+   236                           ;LASTRE_TORAL_3-2.c: 122: PORTC = 0x05;
+   237  0095  3005               	movlw	5
+   238  0096  1283               	bcf	3,5	;RP0=0, select bank0
+   239  0097  1303               	bcf	3,6	;RP1=0, select bank0
+   240  0098  0087               	movwf	7	;volatile
+   241  0099                     l698:	
+   242                           ;LASTRE_TORAL_3-2.c: 126: while (1)
+   243                           
+   244                           
+   245                           ;LASTRE_TORAL_3-2.c: 127: {
+   246                           ;LASTRE_TORAL_3-2.c: 128: RA0= 1;
+   247  0099  1283               	bcf	3,5	;RP0=0, select bank0
+   248  009A  1303               	bcf	3,6	;RP1=0, select bank0
+   249  009B  1405               	bsf	5,0	;volatile
+   250                           
+   251                           ;LASTRE_TORAL_3-2.c: 129: delay(244);
+   252  009C  30F4               	movlw	244
+   253  009D  00A0               	movwf	delay@counter
+   254  009E  3000               	movlw	0
+   255  009F  00A1               	movwf	delay@counter+1
+   256  00A0  120A  118A  20B2  120A  118A  	fcall	_delay
+   257                           
+   258                           ;LASTRE_TORAL_3-2.c: 130: RA0=0;
+   259  00A5  1283               	bcf	3,5	;RP0=0, select bank0
+   260  00A6  1303               	bcf	3,6	;RP1=0, select bank0
+   261  00A7  1005               	bcf	5,0	;volatile
+   262                           
+   263                           ;LASTRE_TORAL_3-2.c: 131: delay(244);
+   264  00A8  30F4               	movlw	244
+   265  00A9  00A0               	movwf	delay@counter
+   266  00AA  3000               	movlw	0
+   267  00AB  00A1               	movwf	delay@counter+1
+   268  00AC  120A  118A  20B2  120A  118A  	fcall	_delay
+   269  00B1  2899               	goto	l698
+   270  00B2                     __end_of_main:	
+   271                           
+   272                           	psect	text1
+   273  00B2                     __ptext1:	
+   274 ;; *************** function _delay *****************
+   275 ;; Defined at:
+   276 ;;		line 91 in file "Z:\3201\LE3\LASTRE_TORAL_3-2.c"
+   277 ;; Parameters:    Size  Location     Type
+   278 ;;  counter         2    0[BANK0 ] int 
+   279 ;; Auto vars:     Size  Location     Type
+   280 ;;  of_count        2    3[BANK0 ] int 
+   281 ;; Return value:  Size  Location     Type
+   282 ;;		None               void
+   283 ;; Registers used:
+   284 ;;		wreg, status,2
+   285 ;; Tracked objects:
+   286 ;;		On entry : 0/0
+   287 ;;		On exit  : 0/0
+   288 ;;		Unchanged: 0/0
+   289 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   290 ;;      Params:         0       2       0       0       0
+   291 ;;      Locals:         0       2       0       0       0
+   292 ;;      Temps:          0       1       0       0       0
+   293 ;;      Totals:         0       5       0       0       0
+   294 ;;Total ram usage:        5 bytes
+   295 ;; Hardware stack levels used:    1
+   296 ;; Hardware stack levels required when called:    1
+   297 ;; This function calls:
+   298 ;;		Nothing
+   299 ;; This function is called by:
+   300 ;;		_main
+   301 ;; This function uses a non-reentrant model
+   302 ;;
+   303                           
+   304                           
+   305                           ;psect for function _delay
+   306  00B2                     _delay:	
+   307                           
+   308                           ;LASTRE_TORAL_3-2.c: 93: int of_count = 0;
+   309                           
+   310                           ;incstack = 0
+   311                           ; Regs used in _delay: [wreg+status,2]
+   312  00B2  1283               	bcf	3,5	;RP0=0, select bank0
+   313  00B3  1303               	bcf	3,6	;RP1=0, select bank0
+   314  00B4  01A3               	clrf	delay@of_count
+   315  00B5  01A4               	clrf	delay@of_count+1
+   316  00B6                     l636:	
+   317                           ;LASTRE_TORAL_3-2.c: 95: while(of_count < counter)
+   318                           
+   319  00B6  0824               	movf	delay@of_count+1,w
+   320  00B7  3A80               	xorlw	128
+   321  00B8  00A2               	movwf	??_delay
+   322  00B9  0821               	movf	delay@counter+1,w
+   323  00BA  3A80               	xorlw	128
+   324  00BB  0222               	subwf	??_delay,w
+   325  00BC  1D03               	skipz
+   326  00BD  28C0               	goto	u65
+   327  00BE  0820               	movf	delay@counter,w
+   328  00BF  0223               	subwf	delay@of_count,w
+   329  00C0                     u65:	
+   330  00C0  1803               	btfsc	3,0
+   331  00C1  0008               	return
+   332                           
+   333                           ;LASTRE_TORAL_3-2.c: 96: {
+   334                           ;LASTRE_TORAL_3-2.c: 97: if(count_flag)
+   335  00C2  1283               	bcf	3,5	;RP0=0, select bank0
+   336  00C3  1303               	bcf	3,6	;RP1=0, select bank0
+   337  00C4  0826               	movf	_count_flag+1,w
+   338  00C5  0425               	iorwf	_count_flag,w
+   339  00C6  1903               	skipnz
+   340  00C7  28B6               	goto	l636
+   341                           
+   342                           ;LASTRE_TORAL_3-2.c: 98: {
+   343                           ;LASTRE_TORAL_3-2.c: 99: of_count++;
+   344  00C8  3001               	movlw	1
+   345  00C9  07A3               	addwf	delay@of_count,f
+   346  00CA  1803               	skipnc
+   347  00CB  0AA4               	incf	delay@of_count+1,f
+   348  00CC  3000               	movlw	0
+   349  00CD  07A4               	addwf	delay@of_count+1,f
+   350                           
+   351                           ;LASTRE_TORAL_3-2.c: 100: count_flag=0;
+   352  00CE  01A5               	clrf	_count_flag
+   353  00CF  01A6               	clrf	_count_flag+1
+   354  00D0  28B6               	goto	l636
+   355  00D1                     __end_of_delay:	
+   356                           
+   357                           	psect	text2
+   358  0023                     __ptext2:	
+   359 ;; *************** function _ISR *****************
+   360 ;; Defined at:
+   361 ;;		line 27 in file "Z:\3201\LE3\LASTRE_TORAL_3-2.c"
+   362 ;; Parameters:    Size  Location     Type
+   363 ;;		None
+   364 ;; Auto vars:     Size  Location     Type
+   365 ;;  read            2    6[COMMON] int 
+   366 ;; Return value:  Size  Location     Type
+   367 ;;		None               void
+   368 ;; Registers used:
+   369 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+   370 ;; Tracked objects:
+   371 ;;		On entry : 0/0
+   372 ;;		On exit  : 0/0
+   373 ;;		Unchanged: 0/0
+   374 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   375 ;;      Params:         0       0       0       0       0
+   376 ;;      Locals:         2       0       0       0       0
+   377 ;;      Temps:          6       0       0       0       0
+   378 ;;      Totals:         8       0       0       0       0
+   379 ;;Total ram usage:        8 bytes
+   380 ;; Hardware stack levels used:    1
+   381 ;; This function calls:
+   382 ;;		Nothing
+   383 ;; This function is called by:
+   384 ;;		Interrupt level 1
+   385 ;; This function uses a non-reentrant model
+   386 ;;
+   387                           
+   388                           
+   389                           ;psect for function _ISR
+   390  0023                     _ISR:	
+   391                           
+   392                           ;LASTRE_TORAL_3-2.c: 29: GIE = 0;
+   393  0023  138B               	bcf	11,7	;volatile
+   394                           
+   395                           ;LASTRE_TORAL_3-2.c: 30: if (INTF)
+   396  0024  1C8B               	btfss	11,1	;volatile
+   397  0025  2871               	goto	i1l33
+   398                           
+   399                           ;LASTRE_TORAL_3-2.c: 31: {
+   400                           ;LASTRE_TORAL_3-2.c: 34: int read;
+   401                           ;LASTRE_TORAL_3-2.c: 35: read = PORTD & 0x0F;
+   402  0026  0808               	movf	8,w	;volatile
+   403  0027  390F               	andlw	15
+   404  0028  00F0               	movwf	??_ISR
+   405  0029  01F1               	clrf	??_ISR+1
+   406  002A  0870               	movf	??_ISR,w
+   407  002B  00F6               	movwf	ISR@read
+   408  002C  0871               	movf	??_ISR+1,w
+   409  002D  00F7               	movwf	ISR@read+1
+   410                           
+   411                           ;LASTRE_TORAL_3-2.c: 37: switch(read)
+   412  002E  2844               	goto	i1l668
+   413  002F                     i1l642:	
+   414                           ;LASTRE_TORAL_3-2.c: 38: {
+   415                           ;LASTRE_TORAL_3-2.c: 39: case 0x00:
+   416                           
+   417                           
+   418                           ;LASTRE_TORAL_3-2.c: 40: PORTC=0x01;
+   419  002F  3001               	movlw	1
+   420  0030  2840               	goto	L8
+   421  0031                     i1l644:	
+   422                           ;LASTRE_TORAL_3-2.c: 42: case 0x01:
+   423                           
+   424                           ;LASTRE_TORAL_3-2.c: 41: break;
+   425                           
+   426                           
+   427                           ;LASTRE_TORAL_3-2.c: 43: PORTC=0x02;
+   428  0031  3002               	movlw	2
+   429  0032  2840               	goto	L8
+   430  0033                     i1l646:	
+   431                           ;LASTRE_TORAL_3-2.c: 45: case 0x02:
+   432                           
+   433                           ;LASTRE_TORAL_3-2.c: 44: break;
+   434                           
+   435                           
+   436                           ;LASTRE_TORAL_3-2.c: 46: PORTC=0x03;
+   437  0033  3003               	movlw	3
+   438  0034  2840               	goto	L8
+   439  0035                     i1l648:	
+   440                           ;LASTRE_TORAL_3-2.c: 48: case 0x04:
+   441                           
+   442                           ;LASTRE_TORAL_3-2.c: 47: break;
+   443                           
+   444                           
+   445                           ;LASTRE_TORAL_3-2.c: 49: PORTC=0x04;
+   446  0035  3004               	movlw	4
+   447  0036  2840               	goto	L8
+   448  0037                     i1l650:	
+   449                           ;LASTRE_TORAL_3-2.c: 51: case 0x05:
+   450                           
+   451                           ;LASTRE_TORAL_3-2.c: 50: break;
+   452                           
+   453                           
+   454                           ;LASTRE_TORAL_3-2.c: 52: PORTC=0x05;
+   455  0037  3005               	movlw	5
+   456  0038  2840               	goto	L8
+   457  0039                     i1l652:	
+   458                           ;LASTRE_TORAL_3-2.c: 54: case 0x06:
+   459                           
+   460                           ;LASTRE_TORAL_3-2.c: 53: break;
+   461                           
+   462                           
+   463                           ;LASTRE_TORAL_3-2.c: 55: PORTC=0x06;
+   464  0039  3006               	movlw	6
+   465  003A  2840               	goto	L8
+   466  003B                     i1l654:	
+   467                           ;LASTRE_TORAL_3-2.c: 57: case 0x08:
+   468                           
+   469                           ;LASTRE_TORAL_3-2.c: 56: break;
+   470                           
+   471                           
+   472                           ;LASTRE_TORAL_3-2.c: 58: PORTC=0x07;
+   473  003B  3007               	movlw	7
+   474  003C  2840               	goto	L8
+   475  003D                     i1l656:	
+   476                           ;LASTRE_TORAL_3-2.c: 60: case 0x09:
+   477                           
+   478                           ;LASTRE_TORAL_3-2.c: 59: break;
+   479                           
+   480                           
+   481                           ;LASTRE_TORAL_3-2.c: 61: PORTC=0x08;
+   482  003D  3008               	movlw	8
+   483  003E  2840               	goto	L8
+   484  003F                     i1l658:	
+   485                           ;LASTRE_TORAL_3-2.c: 63: case 0x0A:
+   486                           
+   487                           ;LASTRE_TORAL_3-2.c: 62: break;
+   488                           
+   489                           
+   490                           ;LASTRE_TORAL_3-2.c: 64: PORTC=0x09;
+   491  003F  3009               	movlw	9
+   492  0040                     L8:	
+   493  0040  0087               	movwf	7	;volatile
+   494                           
+   495                           ;LASTRE_TORAL_3-2.c: 65: break;
+   496  0041  286F               	goto	i1l36
+   497  0042                     i1l660:	
+   498                           ;LASTRE_TORAL_3-2.c: 66: case 0x0C:
+   499                           
+   500  0042                     i1l662:	
+   501                           ;LASTRE_TORAL_3-2.c: 69: case 0x0D:
+   502                           
+   503                           ;LASTRE_TORAL_3-2.c: 68: break;
+   504                           
+   505                           ;LASTRE_TORAL_3-2.c: 67: PORTC=0x00;
+   506                           
+   507  0042                     i1l664:	
+   508                           ;LASTRE_TORAL_3-2.c: 72: case 0x0E:
+   509                           
+   510                           ;LASTRE_TORAL_3-2.c: 71: break;
+   511                           
+   512                           ;LASTRE_TORAL_3-2.c: 70: PORTC=0x00;
+   513                           
+   514                           
+   515                           ;LASTRE_TORAL_3-2.c: 73: PORTC=0x00;
+   516  0042  0187               	clrf	7	;volatile
+   517                           
+   518                           ;LASTRE_TORAL_3-2.c: 75: }
+   519                           
+   520                           ;LASTRE_TORAL_3-2.c: 74: break;
+   521  0043  286F               	goto	i1l36
+   522  0044                     i1l668:	
+   523                           
+   524                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+   525                           ; Switch size 1, requested type "space"
+   526                           ; Number of cases is 1, Range of values is 0 to 0
+   527                           ; switch strategies available:
+   528                           ; Name         Instructions Cycles
+   529                           ; simple_byte            4     3 (average)
+   530                           ; direct_byte           11     8 (fixed)
+   531                           ; jumptable            260     6 (fixed)
+   532                           ;	Chosen strategy is simple_byte
+   533  0044  0877               	movf	ISR@read+1,w
+   534  0045  3A00               	xorlw	0	; case 0
+   535  0046  1903               	skipnz
+   536  0047  2849               	goto	i1l736
+   537  0048  286F               	goto	i1l36
+   538  0049                     i1l736:	
+   539                           
+   540                           ; Switch size 1, requested type "space"
+   541                           ; Number of cases is 12, Range of values is 0 to 14
+   542                           ; switch strategies available:
+   543                           ; Name         Instructions Cycles
+   544                           ; simple_byte           37    19 (average)
+   545                           ; direct_byte           53     8 (fixed)
+   546                           ; jumptable            260     6 (fixed)
+   547                           ;	Chosen strategy is simple_byte
+   548  0049  0876               	movf	ISR@read,w
+   549  004A  3A00               	xorlw	0	; case 0
+   550  004B  1903               	skipnz
+   551  004C  282F               	goto	i1l642
+   552  004D  3A01               	xorlw	1	; case 1
+   553  004E  1903               	skipnz
+   554  004F  2831               	goto	i1l644
+   555  0050  3A03               	xorlw	3	; case 2
+   556  0051  1903               	skipnz
+   557  0052  2833               	goto	i1l646
+   558  0053  3A06               	xorlw	6	; case 4
+   559  0054  1903               	skipnz
+   560  0055  2835               	goto	i1l648
+   561  0056  3A01               	xorlw	1	; case 5
+   562  0057  1903               	skipnz
+   563  0058  2837               	goto	i1l650
+   564  0059  3A03               	xorlw	3	; case 6
+   565  005A  1903               	skipnz
+   566  005B  2839               	goto	i1l652
+   567  005C  3A0E               	xorlw	14	; case 8
+   568  005D  1903               	skipnz
+   569  005E  283B               	goto	i1l654
+   570  005F  3A01               	xorlw	1	; case 9
+   571  0060  1903               	skipnz
+   572  0061  283D               	goto	i1l656
+   573  0062  3A03               	xorlw	3	; case 10
+   574  0063  1903               	skipnz
+   575  0064  283F               	goto	i1l658
+   576  0065  3A06               	xorlw	6	; case 12
+   577  0066  1903               	skipnz
+   578  0067  2842               	goto	i1l660
+   579  0068  3A01               	xorlw	1	; case 13
+   580  0069  1903               	skipnz
+   581  006A  2842               	goto	i1l662
+   582  006B  3A03               	xorlw	3	; case 14
+   583  006C  1903               	skipnz
+   584  006D  2842               	goto	i1l664
+   585  006E  286F               	goto	i1l36
+   586  006F                     i1l36:	
+   587                           
+   588                           ;LASTRE_TORAL_3-2.c: 77: INTF = 0;
+   589  006F  108B               	bcf	11,1	;volatile
+   590                           
+   591                           ;LASTRE_TORAL_3-2.c: 80: }
+   592  0070  2878               	goto	i1l674
+   593  0071                     i1l33:	
+   594                           
+   595                           ;LASTRE_TORAL_3-2.c: 81: else if (TMR0IF)
+   596  0071  1D0B               	btfss	11,2	;volatile
+   597  0072  2878               	goto	i1l674
+   598                           
+   599                           ;LASTRE_TORAL_3-2.c: 82: {
+   600                           ;LASTRE_TORAL_3-2.c: 84: count_flag = 1;
+   601  0073  3001               	movlw	1
+   602  0074  00A5               	movwf	_count_flag
+   603  0075  3000               	movlw	0
+   604  0076  00A6               	movwf	_count_flag+1
+   605                           
+   606                           ;LASTRE_TORAL_3-2.c: 85: TMR0IF = 0;
+   607  0077  110B               	bcf	11,2	;volatile
+   608  0078                     i1l674:	
+   609                           
+   610                           ;LASTRE_TORAL_3-2.c: 86: }
+   611                           ;LASTRE_TORAL_3-2.c: 88: GIE = 1;
+   612  0078  178B               	bsf	11,7	;volatile
+   613  0079  0875               	movf	??_ISR+5,w
+   614  007A  00FF               	movwf	127
+   615  007B  0874               	movf	??_ISR+4,w
+   616  007C  008A               	movwf	10
+   617  007D  0873               	movf	??_ISR+3,w
+   618  007E  0084               	movwf	4
+   619  007F  0E72               	swapf	(??_ISR+2)^(0+-128),w
+   620  0080  0083               	movwf	3
+   621  0081  0EFE               	swapf	126,f
+   622  0082  0E7E               	swapf	126,w
+   623  0083  0009               	retfie
+   624  0084                     __end_of_ISR:	
+   625  007E                     btemp	set	126	;btemp
+   626  007E                     wtemp	set	126
+   627  007E                     wtemp0	set	126
+   628  0080                     wtemp1	set	128
+   629  0082                     wtemp2	set	130
+   630  0084                     wtemp3	set	132
+   631  0086                     wtemp4	set	134
+   632  0088                     wtemp5	set	136
+   633  007F                     wtemp6	set	127
+   634  007E                     ttemp	set	126
+   635  007E                     ttemp0	set	126
+   636  0081                     ttemp1	set	129
+   637  0084                     ttemp2	set	132
+   638  0087                     ttemp3	set	135
+   639  007F                     ttemp4	set	127
+   640  007E                     ltemp	set	126
+   641  007E                     ltemp0	set	126
+   642  0082                     ltemp1	set	130
+   643  0086                     ltemp2	set	134
+   644  0080                     ltemp3	set	128
+   645                           
+   646                           	psect	intentry
+   647  0004                     __pintentry:	
+   648                           ;incstack = 0
+   649                           ; Regs used in _ISR: [wreg-fsr0h+status,2+status,0]
+   650                           
+   651  0004                     interrupt_function:	
+   652  007E                     saved_w	set	btemp
+   653  0004  00FE               	movwf	btemp
+   654  0005  0E03               	swapf	3,w
+   655  0006  00F2               	movwf	??_ISR+2
+   656  0007  0804               	movf	4,w
+   657  0008  00F3               	movwf	??_ISR+3
+   658  0009  080A               	movf	10,w
+   659  000A  00F4               	movwf	??_ISR+4
+   660  000B  1283               	bcf	3,5	;RP0=0, select bank0
+   661  000C  1303               	bcf	3,6	;RP1=0, select bank0
+   662  000D  087F               	movf	btemp+1,w
+   663  000E  00F5               	movwf	??_ISR+5
+   664  000F  120A  118A  2823   	ljmp	_ISR
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        2
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      8       8
+    BANK0            80      5       7
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _ISR in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->_delay
+
+Critical Paths under _ISR in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _ISR in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _ISR in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _ISR in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0     152
+                              _delay
+ ---------------------------------------------------------------------------------
+ (1) _delay                                                5     3      2     152
+                                              0 BANK0      5     3      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (2) _ISR                                                  8     8      0      23
+                                              0 COMMON     8     8      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _delay
+
+ _ISR (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BANK3               60      0       0       9        0.0%
+BITBANK3            60      0       0       8        0.0%
+SFR3                 0      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+BANK2               60      0       0      11        0.0%
+BITBANK2            60      0       0      10        0.0%
+SFR2                 0      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK1            50      0       0       6        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+BANK0               50      5       7       5        8.8%
+BITBANK0            50      0       0       4        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+COMMON               E      8       8       1       57.1%
+BITCOMMON            E      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+DATA                 0      0       F      12        0.0%
+ABS                  0      0       F       3        0.0%
+NULL                 0      0       0       0        0.0%
+STACK                0      0       0       2        0.0%
+EEDATA             100      0       0       0        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.33 build 59893 
+Symbol Table                                                                                   Tue Feb 21 13:07:57 2023
+
+            __CFG_CP$OFF 0000                       u65 00C0                      l636 00B6  
+                    l698 0099                      _GIE 005F                      _RA0 0028  
+           __CFG_CPD$OFF 0000                      _ISR 0023                      fsr0 0004  
+           __CFG_FOSC$XT 0000             __CFG_LVP$OFF 0000                     ?_ISR 0070  
+                   _INTE 005C                     _INTF 0059                     i1l33 0071  
+                   i1l36 006F             __CFG_WRT$OFF 0000                     _main 0084  
+                   btemp 007E            __CFG_BOREN$ON 0000                     ltemp 007E  
+                   start 0012                     ttemp 007E                     wtemp 007E  
+                  ??_ISR 0070                    ?_main 0070            __CFG_WDTE$OFF 0000  
+                  i1l650 0037                    i1l642 002F                    i1l660 0042  
+                  i1l652 0039                    i1l644 0031                    i1l662 0042  
+                  i1l654 003B                    i1l646 0033                    i1l736 0049  
+                  i1l664 0042                    i1l656 003D                    i1l648 0035  
+                  i1l674 0078                    i1l658 003F                    i1l668 0044  
+                  _PORTC 0007                    _PORTD 0008                    _TRISA 0085  
+                  _TRISB 0086                    _TRISC 0087                    _TRISD 0088  
+          __CFG_PWRTE$ON 0000                    _delay 00B2                    pclath 000A  
+                  ltemp0 007E                    ltemp1 0082                    ltemp2 0086  
+                  ltemp3 0080                    ttemp0 007E                    ttemp1 0081  
+                  ttemp2 0084                    ttemp3 0087                    ttemp4 007F  
+                  status 0003                    wtemp0 007E                    wtemp1 0080  
+                  wtemp2 0082                    wtemp3 0084                    wtemp4 0086  
+                  wtemp5 0088                    wtemp6 007F          __initialization 0015  
+           __end_of_main 00B2                   ??_main 0025                   ?_delay 0020  
+                 _ADCON1 009F                   _TMR0IE 005D                   _TMR0IF 005A  
+                 saved_w 007E  __end_of__initialization 001F           __pcstackCOMMON 0070  
+           __pidataBANK0 00D1            __end_of_delay 00D1                  ??_delay 0022  
+                ISR@read 0076               __pmaintext 0084               __pintentry 0004  
+             _count_flag 0025                  __ptext1 00B2                  __ptext2 0023  
+          delay@of_count 0023             __size_of_ISR 0061     end_of_initialization 001F  
+    start_initialization 0015              __end_of_ISR 0084              __pdataBANK0 0025  
+              ___latbits 0002            __pcstackBANK0 0020           __size_of_delay 001F  
+           delay@counter 0020        interrupt_function 0004            __size_of_main 002E  
+               intlevel1 0000               _OPTION_REG 0081  

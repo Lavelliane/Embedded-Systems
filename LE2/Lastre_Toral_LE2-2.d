@@ -1,0 +1,1 @@
+ Lastre_Toral_LE2-2.d  Lastre_Toral_LE2-2.p1:  Z:/3201/LE2/Lastre_Toral_LE2-2.c
